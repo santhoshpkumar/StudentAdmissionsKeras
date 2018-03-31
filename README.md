@@ -13,6 +13,7 @@ The dataset has the following columns:
 [image1]: ./examples/data.png "Visualization"
 [image2]: ./examples/student-acceptance.png "Visualization"
 [image3]: ./examples/all-ranks.png "Visualization"
+[image4]: ./examples/summary.png "Visualization"
 
 First, let's start by looking at the data. For that, we'll use the read_csv function in pandas.
 
@@ -48,17 +49,22 @@ The last 4 inputs will be binary variables that have a value of 1 if the student
 
 So, first things first, let's notice that the test scores have a range of 800, while the grades have a range of 4. This is a huge discrepancy, and it will affect our training. Normally, the best thing to do is to normalize the scores so they are between 0 and 1. We can do this as follows:
 
-{{data["gre"] = data["gre"]/800}}
-{{data["gpa"] = data["gpa"]/4}}
+'''
+ data["gre"] = data["gre"]/800
+ data["gpa"] = data["gpa"]/4
+'''
 
 Now, we split our data input into X, and the labels y , and one-hot encode the output, so it appears as two classes (accepted and not accepted).
 
- {{X = np.array(data)[:,1:]}}
- {{y = np_utils.to_categorical(np.array(data["admit"]))}}
-
+'''
+ X = np.array(data)[:,1:]
+ y = np_utils.to_categorical(np.array(data["admit"]))
+'''
+ 
 Building the model architecture
 And finally, we define the model architecture. We can use different architectures, but here's an example:
 
+'''
  model = Sequential()
  model.add(Dense(128, input_dim=6))
  model.add(Activation('sigmoid'))
@@ -68,6 +74,19 @@ And finally, we define the model architecture. We can use different architecture
  model.add(Activation('sigmoid'))
  model.compile(loss = 'categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
  model.summary()
+'''
+
 The error function is given by categorical_crossentropy, which is the one we've been using, but there are other options. There are several optimizers which you can choose from, in order to improve your training. Here we use adam, but others that are useful are rmsprop. They use a variety of techniques that we'll outline in the following lectures.
 
 The model summary will tell us the following:
+
+![alt text][image4]
+
+Training the model
+Now, we train the model, with 1000 epochs. Don't worry about the batch_size, we'll learn it soon.
+
+model.fit(X_train, y_train, epochs=1000, batch_size=100, verbose=0)
+Evaluating the model
+And finally, we can evaluate our model.
+
+ score = model.evaluate(X_train, y_train)
