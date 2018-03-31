@@ -1,5 +1,4 @@
-# StudentAdmissionsKeras
-Students admissions using UCLA data set and Keras
+# Students Admission model using Keras and UCLA data set
 
 The dataset has the following columns:
 
@@ -82,11 +81,16 @@ The model summary will tell us the following:
 
 ![alt text][image4]
 
-Training the model
+## Training the model
 Now, we train the model, with 1000 epochs. Don't worry about the batch_size, we'll learn it soon.
 
+```
 model.fit(X_train, y_train, epochs=1000, batch_size=100, verbose=0)
-Evaluating the model
+```
+
+## Evaluating the model
 And finally, we can evaluate our model.
 
+```
  score = model.evaluate(X_train, y_train)
+```
