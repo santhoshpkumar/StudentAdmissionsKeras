@@ -1,5 +1,7 @@
 # Students Admission model using Keras and UCLA data set
 
+To analyze the whole dataset on Keras. We'll analyze the following dataset of student admissions at UCLA: 'https://stats.idre.ucla.edu/stat/data/binary.csv'
+
 The dataset has the following columns:
 
 - Student GPA (grades)
@@ -7,7 +9,6 @@ The dataset has the following columns:
 - Score on the GRE (test)
 
 - Class rank (1-4)
-
 
 [image1]: ./examples/data.png "Visualization"
 [image2]: ./examples/student-acceptance.png "Visualization"
