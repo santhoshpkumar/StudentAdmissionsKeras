@@ -16,11 +16,11 @@ The dataset has the following columns:
 
 First, let's start by looking at the data. For that, we'll use the read_csv function in pandas.
 
+```
 import pandas as pd
-
 data = pd.read_csv('https://stats.idre.ucla.edu/stat/data/binary.csv')
-
 print(data)
+```
 
 ![alt text][image1]
 
